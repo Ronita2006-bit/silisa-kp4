@@ -26,7 +26,7 @@
                 </a>
             </nav>
         </div>
-        <div class="rail-foot"><strong>Ronita</strong>Pengguna<br><span>Local workspace</span></div>
+        <div class="rail-foot"><strong>Ronita&livia</strong>Pengguna<br><span>Local workspace</span></div>
     </aside>
 
     <div class="content">
@@ -34,7 +34,7 @@
             <span class="trail">SiLiSa <span aria-hidden="true">/</span> @yield('trail', 'Dashboard')</span>
             <div class="top-actions">
                 <button id="theme" type="button" aria-pressed="false">Dark mode</button>
-                <span class="avatar" aria-label="Ronita">RN</span>
+                <span class="avatar" aria-label="Ronita&livia">RN</span>
             </div>
         </header>
 
