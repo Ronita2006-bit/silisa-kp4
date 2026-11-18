@@ -24,6 +24,9 @@
                 <a href="{{ url('/') }}" @if(request()->is('/')) aria-current="page" @endif>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 5h12M9 12h12M9 19h12M3 5h1M3 12h1M3 19h1"/></svg><span>Dashboard</span>
                 </a>
+                <a href="{{ route('jenis-limbah.index') }}" @if(request()->is('jenis-limbah*')) aria-current="page" @endif>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Jenis Limbah</span>
+                </a>
             </nav>
         </div>
         <div class="rail-foot"><strong>Ronita&livia</strong>Pengguna<br><span>Local workspace</span></div>
