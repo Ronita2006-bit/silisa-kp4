@@ -1,0 +1,123 @@
+/* Tema hijau SiLiSa, dimuat setelah style.css */
+:root {
+    --accent: #2a8553;
+    --accent-soft: #e3f3ea;
+    --paper: #f3f7f4;
+    --rail: #10231a;
+    --rail-text: #d4e6da;
+}
+:root.dark {
+    --ink: #e8f1ea;
+    --muted: #9db5a4;
+    --paper: #0e1712;
+    --surface: #14221a;
+    --line: #22392b;
+    --accent: #5fbf86;
+    --accent-soft: #1b3a2a;
+    --rail: #0a1510;
+    --rail-text: #d4e6da;
+}
+.rail nav a[aria-current],
+.dark .rail nav a[aria-current] {
+    box-shadow: inset 3px 0 0 #5fbf86;
+}
+.dark .button.primary { color: #0b1a11; }
+
+/* ---------- Halaman Catat limbah ---------- */
+.sl-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    max-width: 960px;
+}
+.sl-card h2 { font-size: 1.15rem; margin: 0 0 .75rem; }
+.sl-hint { color: var(--muted); font-size: .9rem; margin: -.25rem 0 1rem; }
+
+.sl-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 1rem;
+}
+.sl-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.sl-grid label {
+    display: block;
+    font-size: .85rem;
+    font-weight: 600;
+    margin-bottom: .35rem;
+    color: var(--ink);
+}
+.sl-grid input,
+.sl-grid select {
+    width: 100%;
+    padding: .6rem .75rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+}
+.sl-grid input:focus,
+.sl-grid select:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+.sl-card .table-scroll { margin-top: 1.5rem; }
+
+.sl-chip {
+    display: inline-block;
+    padding: .15rem .6rem;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 600;
+}
+.sl-ok   { background: var(--accent-soft); color: var(--accent); }
+.sl-warn { background: #e8624f; color: #fff; }
+
+@media (max-width: 720px) {
+    .sl-grid, .sl-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ---------- Halaman Penjualan keluar ---------- */
+.sl-grid-4 { grid-template-columns: repeat(4, 1fr); }
+.sl-card .table-scroll { margin-top: 0; }
+
+@media (max-width: 900px) {
+    .sl-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+    .sl-grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ---------- Halaman Stok ---------- */
+.sl-bar {
+    width: 150px;
+    height: 8px;
+    background: var(--line);
+    border-radius: 999px;
+    overflow: hidden;
+}
+.sl-bar-fill {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 999px;
+}
+.sl-bar-fill.sl-bar-amber { background: #f2b934; }
+.sl-amber { background: #f2b934; color: #2b2000; }
+
+/* ---------- Pesan sukses dan error ---------- */
+.sl-alert {
+    max-width: 960px;
+    padding: .75rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+    font-size: .95rem;
+}
+.sl-alert-ok   { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
+.sl-alert-warn { background: #fff4d6; color: #5c4300; border: 1px solid #f2b934; }
+.sl-error { color: var(--danger); font-size: .8rem; margin: .3rem 0 0; }
+:root.dark .sl-error { color: #f08a8a; }
+:root.dark .sl-alert-warn { background: #3a2f10; color: #f2d58a; }
