@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    // Nama kolom peran di tabel users. Ganti kalau di databasemu namanya lain.
-    private const KOLOM_PERAN = 'peran';
-
     public function showLogin()
     {
         return view('auth.login');
@@ -19,22 +15,31 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $data = $request->validate([
-            'peran' => ['required', 'in:operator,manajer,admin'],
+            'peran'    => ['required', 'in:operator,manajer,admin'],
+            'email'    => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        $user = User::where(self::KOLOM_PERAN, $data['peran'])
-            ->where('status', 'aktif')
-            ->first();
+        $berhasil = Auth::attempt([
+            'email'    => $data['email'],
+            'password' => $data['password'],
+            'peran'    => $data['peran'],
+            'status'   => 'aktif',
+        ], $request->boolean('remember'));
 
-        if (! $user) {
+        if (! $berhasil) {
             return back()
-                ->withErrors(['peran' => 'Belum ada akun aktif untuk peran ini.'])
-                ->onlyInput('peran');
+                ->withErrors(['email' => 'Email, password, atau peran tidak cocok, atau akun nonaktif.'])
+                ->onlyInput('email', 'peran');
         }
 
-        Auth::login($user);
         $request->session()->regenerate();
-        return redirect()->intended($user->peran === 'operator' ? route('catat-limbah') : '/');
+
+        $tujuan = Auth::user()->peran === 'operator'
+            ? route('catat-limbah')
+            : '/';
+
+        return redirect()->intended($tujuan);
     }
 
     public function logout(Request $request)
@@ -42,6 +47,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect('/login');
     }
 }

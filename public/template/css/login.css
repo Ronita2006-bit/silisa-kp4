@@ -234,3 +234,40 @@ body.login-page {
     body.login-page { grid-template-columns: 1fr; }
     .login-side { display: none; }
 }
+[hidden] { display: none !important; }
+
+.login-field { margin-bottom: 14px; }
+.login-field label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 600; }
+.login-field input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    background: #fff;
+    color: #111;
+}
+.login-field input:focus { outline: none; border-color: #5bbf85; }
+
+.pw-wrap { position: relative; }
+.pw-wrap input { padding-right: 110px; }
+.pw-toggle {
+    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    background: none; border: 0; color: #2f7d52;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+}
+
+.peran-badge {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 14px; margin-bottom: 18px;
+    border: 1px solid rgba(91, 191, 133, .5);
+    border-radius: 10px; font-size: 14px;
+}
+.link-ganti {
+    background: none; border: 0; color: #5bbf85;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+}
+
+.login-remember {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 18px; font-size: 14px; cursor: pointer;
+}

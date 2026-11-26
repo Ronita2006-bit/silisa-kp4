@@ -121,3 +121,123 @@
 .sl-error { color: var(--danger); font-size: .8rem; margin: .3rem 0 0; }
 :root.dark .sl-error { color: #f08a8a; }
 :root.dark .sl-alert-warn { background: #3a2f10; color: #f2d58a; }
+
+/* ===== DASHBOARD MANAJER (tambahkan di paling bawah silisa.css) ===== */
+
+/* Banner peringatan */
+.mj-alert {
+    border-radius: 12px;
+    padding: .75rem 1rem;
+    margin-bottom: .75rem;
+    font-size: .92rem;
+}
+.mj-alert--warn   { background: #fff3cd; color: #5c4300; border: 1px solid #f0d37a; }
+.mj-alert--danger { background: #fde4e1; color: #7a1f14; border: 1px solid #f1aaa1; }
+
+.mj-bar {
+    height: 6px;
+    border-radius: 99px;
+    background: rgba(0, 0, 0, .1);
+    margin-top: .6rem;
+    overflow: hidden;
+}
+.mj-bar span { display: block; height: 100%; border-radius: 99px; }
+.mj-alert--warn   .mj-bar span { background: #e0a100; }
+.mj-alert--danger .mj-bar span { background: #d64533; }
+
+/* Kartu ringkasan */
+.mj-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.25rem 0 1.5rem;
+}
+.mj-card { padding: 1.25rem; }
+.mj-value {
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1f5c3d;
+}
+.mj-label { margin-top: .35rem; font-size: .9rem; opacity: .75; }
+
+/* Mode gelap */
+.dark .mj-alert--warn   { background: #3d3208; color: #f5df9a; border-color: #6b5810; }
+.dark .mj-alert--danger { background: #44201c; color: #f6c3bc; border-color: #7a3a33; }
+.dark .mj-bar { background: rgba(255, 255, 255, .15); }
+.dark .mj-value { color: #7fd1a0; }
+
+/* ===== HALAMAN STOK MANAJER (tambahkan di paling bawah silisa.css) ===== */
+
+/* Bar kapasitas */
+.mj-meter {
+    width: 140px;
+    height: 8px;
+    border-radius: 99px;
+    background: #d8e2db;
+    overflow: hidden;
+}
+.mj-meter span { display: block; height: 100%; border-radius: 99px; }
+.mj-meter--ok span     { background: #1f5c3d; }
+.mj-meter--warn span   { background: #e0a100; }
+.mj-meter--danger span { background: #d64533; }
+.mj-meter-note { margin-top: .3rem; font-size: .75rem; opacity: .7; }
+
+/* Badge status */
+.mj-badge {
+    display: inline-block;
+    padding: .15rem .7rem;
+    border-radius: 99px;
+    font-size: .8rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.mj-badge--ok     { background: #dcebe1; color: #1f5c3d; }
+.mj-badge--warn   { background: #e0a100; color: #2b2000; }
+.mj-badge--danger { background: #d64533; color: #fff; }
+
+/* Mode gelap */
+.dark .mj-meter { background: rgba(255, 255, 255, .15); }
+.dark .mj-meter--ok span { background: #7fd1a0; }
+.dark .mj-badge--ok { background: #1d3a2a; color: #a9e3c0; }
+
+/* ===== HALAMAN LAPORAN MANAJER (tambahkan di paling bawah silisa.css) ===== */
+
+/* Baris total */
+.mj-total th,
+.mj-total td { font-weight: 700; border-top: 2px solid rgba(0, 0, 0, .15); }
+
+/* Tombol ekspor */
+.mj-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    padding: 1.1rem 1.25rem 1.25rem;
+}
+.mj-btn {
+    display: inline-block;
+    padding: .55rem 1.2rem;
+    border-radius: 10px;
+    border: 1.5px solid #1f5c3d;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+.mj-btn--solid   { background: #1f5c3d; color: #fff; }
+.mj-btn--outline { background: transparent; color: #1f5c3d; }
+.mj-btn:hover    { opacity: .88; }
+
+/* Mode gelap */
+.dark .mj-total th,
+.dark .mj-total td { border-top-color: rgba(255, 255, 255, .25); }
+.dark .mj-btn { border-color: #7fd1a0; }
+.dark .mj-btn--solid   { background: #7fd1a0; color: #10241a; }
+.dark .mj-btn--outline { color: #7fd1a0; }
+
+/* Cetak / simpan PDF: sembunyikan sidebar, header, footer, tombol */
+@media print {
+    .rail, .topbar, .footer, .skip-link, .mj-actions { display: none !important; }
+    .shell { display: block !important; }
+    .content, .main { margin: 0 !important; padding: 0 !important; }
+}

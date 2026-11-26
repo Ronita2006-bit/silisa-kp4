@@ -11,7 +11,7 @@
         document.documentElement.classList.add('js');
         try {
             if (localStorage.getItem('aftercare-theme') === 'dark') document.documentElement.classList.add('dark')
-        } catch (e) {}
+        } catch (e) { }
     </script>
     <link rel="stylesheet" href="{{ asset('template/css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template/css/style.css') }}">
@@ -31,15 +31,15 @@
                 <p class="eyebrow">Menu</p>
                 <nav aria-label="Main navigation">
                     @if (auth()->user()->peran === 'operator')
-                        <a href="{{ route('catat-limbah') }}"
-                            @if (request()->is('catat-limbah*')) aria-current="page" @endif>
+                        <a href="{{ route('catat-limbah') }}" @if (request()->is('catat-limbah*')) aria-current="page"
+                        @endif>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
                                 aria-hidden="true">
                                 <path d="M12 5v14M5 12h14" />
                             </svg><span>Catat limbah</span>
                         </a>
-                        <a href="{{ route('penjualan-keluar') }}"
-                            @if (request()->is('penjualan-keluar*')) aria-current="page" @endif>
+                        <a href="{{ route('penjualan-keluar') }}" @if (request()->is('penjualan-keluar*'))
+                        aria-current="page" @endif>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
                                 aria-hidden="true">
                                 <path d="M7 17L17 7M8 7h9v9" />
@@ -66,9 +66,27 @@
                         </svg><span>Dashboard</span>
                     </a>
 
+                    {{-- ===== MENU MANAJER ===== --}}
+                    @if (auth()->user()->peran === 'manajer')
+                        <a href="{{ route('manajer.stok') }}" @if (request()->is('manajer/stok*')) aria-current="page"
+                        @endif>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                aria-hidden="true">
+                                <path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7" />
+                            </svg><span>Stok</span>
+                        </a>
+                        <a href="{{ route('laporan') }}" @if (request()->is('laporan*')) aria-current="page" @endif>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                aria-hidden="true">
+                                <path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7" />
+                            </svg><span>Laporan</span>
+                        </a>
+                    @endif
+                    {{-- ===== AKHIR MENU MANAJER ===== --}}
+
                     @if (auth()->user()->peran === 'admin')
-                        <a href="{{ route('jenis-limbah.index') }}"
-                            @if (request()->is('jenis-limbah*')) aria-current="page" @endif>
+                        <a href="{{ route('jenis-limbah.index') }}" @if (request()->is('jenis-limbah*')) aria-current="page"
+                        @endif>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
                                 aria-hidden="true">
                                 <rect x="3" y="3" width="7" height="7" rx="1" />
@@ -77,8 +95,7 @@
                                 <rect x="14" y="14" width="7" height="7" rx="1" />
                             </svg><span>Jenis Limbah</span>
                         </a>
-                        <a href="{{ route('pengguna.index') }}"
-                            @if (request()->is('pengguna*')) aria-current="page" @endif>
+                        <a href="{{ route('pengguna.index') }}" @if (request()->is('pengguna*')) aria-current="page" @endif>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
                                 aria-hidden="true">
                                 <circle cx="9" cy="8" r="3.5" />
