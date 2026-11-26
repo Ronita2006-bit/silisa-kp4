@@ -63,10 +63,23 @@ class CatatLimbahController extends Controller
             ];
         });
 
+        // Catatan limbah hari ini (untuk kartu "Limbah hari ini" dan "Riwayat hari ini")
+        $namaJenis = JenisLimbah::pluck('nama', 'id');
+
+        $riwayatHariIni = LimbahHarian::whereDate('tanggal', today())
+            ->orderByDesc('id')
+            ->get()
+            ->map(fn ($x) => [
+                'jenis'  => $namaJenis[$x->jenis_limbah_id] ?? 'Limbah',
+                'jam'    => $x->created_at?->format('H.i') ?? '-',
+                'jumlah' => (float) $x->jumlah,
+            ]);
+
         return view('operator.catat-limbah', [
-            'jenisLimbah' => $jenisLimbah,
-            'rekap'       => $rekap,
-            'tkksAda'     => (bool) $tkks,
+            'jenisLimbah'    => $jenisLimbah,
+            'rekap'          => $rekap,
+            'tkksAda'        => (bool) $tkks,
+            'riwayatHariIni' => $riwayatHariIni,
         ]);
     }
 
